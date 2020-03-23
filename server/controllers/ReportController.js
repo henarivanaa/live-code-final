@@ -4,8 +4,17 @@ class ReportController {
   static async getAll(req, res, next) {
     try {
       const UserId = req.userData.id
-      const reports = await Report.findAll({ where: { UserId } })
-      res.status(200).json(reports)
+      const reports = await Report.findAll({ where: { UserId }, include: [ Country ] })
+      const cases = []
+      reports.forEach(el => {
+        const report = {
+          id: el.id,
+          cases: el.cases,
+          Country: el.Country.name
+        }
+        cases.push(report)
+      })
+      res.status(200).json(cases)
     } catch (err) {
       next(err)
     }
@@ -15,7 +24,7 @@ class ReportController {
     try {
       const { cases, CountryId } = req.body
       const UserId = req.userData.id
-      const created = await Report.create({ cases, CountryId, UserId })
+      const created = await Report.create({ cases: Number(cases), CountryId, UserId })
 
       const country = await Country.findOne({ where: { id: CountryId } })
       const obj = {

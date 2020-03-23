@@ -1,26 +1,23 @@
 <template>
-  <div class="home">
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col>
-          <div>
-            <b-img
-              src="/img/login.svg"
-              fluid
-              alt="Responsive image"
-            ></b-img>
-          </div>
-        </b-col>
-
-        <b-col> </b-col>
-      </b-row>
-    </b-container>
+  <div>
+    <Navbar />
+    <Countries />
   </div>
 </template>
 
 <script>
+import Navbar from '../components/Navbar.vue'
+import Countries from '../components/Countries.vue'
+
 export default {
-  name: "Home",
-  components: {}
-};
+  name: 'Home',
+  components: {
+    Navbar,
+    Countries
+  }
+}
 </script>
+
+<style>
+
+</style>
