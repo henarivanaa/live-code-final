@@ -5,7 +5,7 @@
         <b-col>
           <div>
             <b-img
-              src="./undraw_medicine_b1ol.svg"
+              src="/img/login.svg"
               fluid
               alt="Responsive image"
             ></b-img>
